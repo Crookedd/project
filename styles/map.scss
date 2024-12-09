@@ -1,0 +1,182 @@
+// Переменные
+$primary-color: #000;
+$secondary-color: rgba(255, 255, 255, 0.8);
+$button-hover-color: #444;
+
+// Общие стили
+body {
+    margin: 0;
+    font-family: "Roboto", sans-serif;
+}
+
+// Стили контейнера
+.container {
+    display: flex;
+    height: 100vh;
+    position: relative;
+}
+
+// Стили боковой панели
+.sidebar {
+    width: 100px;
+    background-color: $secondary-color;
+    display: flex;
+    flex-direction: column;
+    justify-content: right;
+    gap: 20px;
+    padding: 20px;
+    box-sizing: border-box;
+
+    .logo-image {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        cursor: pointer;
+    }
+
+    .route-button {
+        width: 50px; 
+        height: 50px;
+        border-radius: 50%;
+        cursor: pointer;
+    }
+}
+
+// Стили карты
+#map {
+    flex-grow: 1;
+    height: 100%;
+    position: relative; 
+}
+
+// Стили панели маршрута
+.route-panel {
+    width: 300px;
+    background-color: $secondary-color;
+    padding: 20px;
+    box-sizing: border-box;
+    max-height: 100%;
+    overflow-y: auto;
+    position: fixed;
+    left: 0; 
+    top: 0;
+    bottom: 0;
+    transform: translateX(-100%); 
+    transition: transform 0.3s;
+    z-index: 1000; 
+
+    &.open {
+        transform: translateX(0);
+        left: 100px;
+    }
+
+    .route-form {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+
+        input, button {
+            padding: 10px;
+            box-sizing: border-box;
+        }
+
+        button {
+            color: rgb(4, 43, 5);
+            border: 2px solid rgb(4, 43, 5);
+            border-radius: 25px;
+            cursor: pointer;  
+            padding: 10px;
+            margin-bottom: 10px;
+            transition: background-color 0.3s;
+
+            &:hover {
+                background-color: $button-hover-color;
+                color:#ffffff;
+            }
+        }
+    }
+
+    
+}
+
+// Стили кнопки местоположения
+#location-button {
+    position: fixed;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    background-color: white;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+    z-index: 1001;
+}
+
+
+// Добавьте стили для новой панели информации
+.info-panel {
+    width: 300px;
+    background-color: $secondary-color;
+    padding: 20px;
+    box-sizing: border-box;
+    max-height: 100%;
+    overflow-y: auto;
+    position: fixed; 
+    left: 0;
+    top: 0;
+    bottom: 0;
+    transform: translateX(-100%); 
+    transition: transform 0.3s;
+    z-index: 1000; 
+
+    &.open {
+        transform: translateX(0); 
+        left: 100px;
+    }
+
+    #close-info {
+        color: rgb(4, 43, 5);
+        width: 250px;
+        border: 2px solid rgb(4, 43, 5);
+        border-radius: 25px;
+        cursor: pointer;  
+        padding: 10px;
+        margin-bottom: 10px;
+
+        &:hover {
+            background-color: $button-hover-color;
+            color:#ffffff;
+        }
+    }
+}
+
+.attraction-image {
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 10px;
+}
+
+.swiper {
+    width: 100%;
+    height: 100%;
+    margin-bottom: 20px;
+}
+
+.swiper-slide {
+    text-align: center;
+    font-size: 18px;
+    background: #ffffff00;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.swiper-slide img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}

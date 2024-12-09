@@ -1,0 +1,347 @@
+// Переменные
+$primary-color: #000;
+$secondary-color: rgba(255, 255, 255, 0);
+$button-hover-color: #444;
+$hero-background: url('../images/KZ.jpg'); 
+
+@font-face {
+    font-family: "Garamond";
+    src: url(../fonts/EBGaramond-Regular.ttf);
+}
+
+@font-face {
+    font-family: "SemiBold";
+    src: url(../fonts/EBGaramond-SemiBoldItalic.ttf);
+}
+
+
+// Основные стили
+body {
+    margin: 0;
+    font-family: "Garamond", sans-serif;
+    header {
+        position: fixed; /* Фиксируем header */
+        top: 0;
+        left: 0;
+        right: 0;
+        background-color: rgba(255, 255, 255, 0); /* Прозрачный фон */
+        padding: 5px 15px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        z-index: 1000;
+        transition: background-color 0.3s ease, box-shadow 0.3s ease;
+
+        &.scrolled {
+            background-color: rgba(255, 255, 255, 0.308); /* Полупрозрачный фон при прокрутке */
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Добавляем тень */
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+
+            img {
+                width: 40px; 
+                height: 40px;
+                border-radius: 50%;
+            }
+
+            h1 {
+               // font-family: "SemiBold", sans-serif;
+                font-size: 30px;
+                color: $primary-color;
+                margin: 0;
+            }
+
+        }
+
+        .menu {
+            display: flex;
+            gap: 10px;
+            margin-left: auto;
+            align-items: center; 
+
+            a {
+                text-decoration: none;
+                color: $primary-color;
+                font-weight: bold;
+                margin: 40px;
+                font-size: 25px;
+            }
+
+            .button {
+                padding: 10px 15px;
+                background-color: rgba(16, 23, 18, 0.322);
+                color: white;
+                border: 2px solid #fff;
+                border-radius: 25px;
+                cursor: pointer;
+                font-size: 20px;
+                transition: background-color 0.3s;
+                text-decoration: none;
+
+                &:hover {
+                    background-color: $button-hover-color;
+                }
+            }
+        }
+    }
+
+    .hero {
+        height: 100vh;
+        background-image: $hero-background;
+        background-size: cover;
+        background-position: center;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: rgb(4, 43, 5);
+        text-shadow: 0 0 2px;
+        padding-top: 60px;
+    
+        .text-content {
+            width: 50%;
+            text-align: left;
+            padding-left: 50px;
+    
+            h2 {
+                font-size: 100px;
+                font-weight: bold;
+                line-height: 80px;
+                letter-spacing: 0.06em;
+                color: #021003;
+                margin-bottom: 20px;
+            }
+    
+            .description {
+                display: flex;
+                align-items: flex-start;
+                margin-bottom: 60px;
+    
+                .arrow-image {
+                    width: 60px;
+                    height: 60px;
+                    background-image: url('/images/стрелка.svg');
+                    background-size: contain;
+                    background-repeat: no-repeat;
+                    margin-right: 20px;
+                }
+    
+                p {
+                    font-size: 24px;
+                    line-height: 36px;
+                    letter-spacing: 0.06em;
+                    color: #021003;
+                    flex-wrap: wrap;
+                    max-width: 50%;
+                }
+            }
+    
+    
+            .start-button {
+                padding: 15px 150px;
+                background-color: rgba(5, 129, 46, 0);
+                color: white;
+                border: 2px solid #fff;
+                border-radius: 25px;
+                cursor: pointer;
+                font-size: 22px;
+                transition: background-color 0.3s;
+                text-decoration: none;
+                margin-top: 80px;
+    
+                &:hover {
+                    background-color: $button-hover-color;
+                }
+            }
+        }
+    
+    .image-gallery {
+        width: 50%;
+        display: flex;
+        flex-wrap: wrap; 
+        align-items: center;
+        gap: 20px;
+
+        .image-item {
+            position: relative;
+
+            img {
+                width: 230px; 
+                height: 310px;
+                border-radius: 25px;
+                transition: transform 0.3s;
+                border: 2px solid white;
+
+                &:hover {
+                    transform: scale(1.1);
+                }
+            }
+
+            .separator {
+                width: 100%;
+                height: 1px;
+                background-color: white;
+                margin: 25px 0;
+            }
+
+            .caption {
+                position: absolute;
+                bottom: -20px;
+                left: 0;
+                width: 100%;
+                text-align: center;
+                font-size: 20px;
+                color: white;
+            }
+        }
+    }
+    }
+
+    .content {
+        height: 200vh; 
+        background-color: #f0f0f0;
+       // padding-top: 100vh; 
+        padding-top: 60px;
+    }
+
+    
+}
+
+
+.carousel-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;  /* Заголовок должен быть сверху */
+    text-align: center;
+    padding-top: 50px;
+    padding-bottom: 400px; /* Отступы сверху и снизу */
+    background-color: #28332c94;  /* Фон для контейнера */
+    width: 100%;
+    height: auto;  /* Убираем жесткое ограничение высоты */
+    box-sizing: border-box;  /* Чтобы отступы не увеличивали размер */
+    overflow: hidden;  /* Скрываем все элементы, выходящие за пределы */
+}
+
+.carousel {
+  //  gap: 0;  /* Убираем промежутки между элементами */
+    position: relative;
+    transition: transform 0.5s ease;
+}
+
+
+.carousel-title {
+    font-size: 36px;  /* Размер шрифта для заголовка */
+    font-weight: bold;
+    color: #333;  /* Цвет текста */
+    margin-bottom: 30px;  /* Отступ снизу */
+    text-align: center;
+}
+
+.carousel-item {
+    position: absolute; /* Используем absolute для наложения картинок */
+    text-align: center;
+    border-radius: 20px;
+    background-color: #28332c94;
+    border: 2px solid white;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    transition: transform 0.5s, width 0.5s, height 0.5s;
+    cursor: pointer;
+    z-index: 1;
+    opacity: 0.8; /* Делаем боковые элементы полупрозрачными */
+}
+
+.carousel-item img {
+    width: 100%;
+    height: 90%;
+    object-fit: cover;
+    border-radius: 15px 15px 0 0;
+}
+
+.carousel-item h3 {
+    margin: 2px;
+    font-size: 15px;
+    color: #ffffff;
+}
+
+.carousel-item.active {
+    transform: translateY(-20px) scale(1.2); /* Центрируем элемент с плавным увеличением */
+    width: 250px; /* Центральный элемент увеличиваем */
+    height: 300px; /* Центральный элемент увеличиваем */
+    box-shadow: 6px 6px 15px rgba(0, 0, 0, 0.3);
+    z-index: 2; /* Центрируем элемент */
+    opacity: 1; /* Центральный элемент не полупрозрачный */
+}
+
+.carousel-item.inactive {
+    transform: scale(1.1);  /* Немного уменьшаем боковые элементы */
+    width: 200px;
+    height: 270px;
+    opacity: 0.5;  /* Уменьшаем прозрачность боковых элементов */
+}
+
+.carousel-item:first-child,
+.carousel-item:last-child {
+    flex-grow: 1;
+}
+
+footer {
+    background-color: #021003; // Цвет фона
+    color: #fff; // Цвет текста
+    padding: 20px 0;
+    font-size: 14px;
+
+    .footer-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0 15px;
+
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+
+            img {
+                width: 50px;
+                height: 50px;
+                border-radius: 50%;
+            }
+
+            h1 {
+                font-size: 20px;
+                color: #fff;
+            }
+        }
+
+        .footer-links,
+        .footer-socials {
+            display: flex;
+            gap: 15px;
+
+            a {
+                text-decoration: none;
+                color: #fff;
+                transition: color 0.3s;
+
+                &:hover {
+                    color: #00a651; // Цвет при наведении
+                }
+            }
+        }
+
+        .footer-copy {
+            text-align: center;
+            width: 100%;
+            margin-top: 15px;
+            font-size: 12px;
+        }
+    }
+}
+

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Карта Кузбасса</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/map.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet-routing-machine/dist/leaflet-routing-machine.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css" />
+    <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
+</head>
+<body>
+    
+    <div class="container">
+        <div class = "leaflet-control-attribution"> </div>
+        <div class="sidebar">
+            <div class="sidebar-item">
+                <img src="/images/kemerovo.jpg" alt="Кузбасс" class="logo-image" onclick="window.location.href='index.html'">
+            </div>
+            <div class="sidebar-item">
+                <img id="route-button" src="/images/route.svg" alt="Построить маршрут" class="route-button" />
+                <img id="info-button" src="/images/search.svg" alt="Информация" class="route-button" />
+            </div>
+        </div>
+        <div id="map"></div>
+        <div id="route-panel" class="route-panel">
+            <div class="route-form">
+                <label for="from">Откуда:</label>
+                <input type="text" id="from" placeholder="Введите название достопримечательности">
+                <label for="to">Куда:</label>
+                <input type="text" id="to" placeholder="Введите название достопримечательности">
+                <button id="build-route">Построить</button>
+                <input type="text" id="extra-point" placeholder="Введите название достопримечательности">
+                <button id="add-point">Добавить точку</button>
+                <div id="route-info" style="padding: 10px; max-height: 200px; overflow-y: auto;"></div>
+            </div>
+        </div>
+        <div id="info-panel" class="info-panel">
+            <div id="info-content"></div>
+            <button id="close-info">Закрыть</button>
+        </div>
+    </div>
+    <div class="controls">
+        <img id="location-button" src="/images/near_me.svg" alt="Моё местоположение" />
+    </div>
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <script src="https://unpkg.com/leaflet-routing-machine/dist/leaflet-routing-machine.js"></script>
+    <script src="/map.js"></script>
+</body>
+</html>
