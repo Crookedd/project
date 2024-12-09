@@ -195,7 +195,7 @@ body .content {
 .carousel-title {
   font-size: 36px; /* Размер шрифта для заголовка */
   font-weight: bold;
-  color: #333; /* Цвет текста */
+  color: primary-color; /* Цвет текста */
   margin-bottom: 30px; /* Отступ снизу */
   text-align: center;
 }
@@ -249,7 +249,7 @@ body .content {
 }
 
 footer {
-  background-color: #021003;
+  background-color: #072109;
   color: #fff;
   padding: 20px 0;
   font-size: 14px;
