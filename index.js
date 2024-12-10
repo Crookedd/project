@@ -6,7 +6,7 @@ let activeIndex = Math.floor(items.length / 2); // Центральный эле
 function updateCarousel() {
     items.forEach((item, index) => {
         const offset = index - activeIndex;
-        item.style.transform = `translateX(${offset * 240}px)`; // Выравнивание по оси X
+        item.style.transform = `translateX(${offset * 160}px)`; // Выравнивание по оси X
         item.classList.remove('active', 'inactive'); // Убираем классы
         if (index === activeIndex) {
             item.classList.add('active'); // Центральный элемент
@@ -30,14 +30,6 @@ items.forEach((item, index) => {
     });
 });
 
-window.addEventListener('scroll', () => {
-    const header = document.querySelector('header');
-    if (window.scrollY > 50) {
-        header.classList.add('scrolled');
-    } else {
-        header.classList.remove('scrolled');
-    }
-});
 
 
 

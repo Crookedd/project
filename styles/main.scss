@@ -215,19 +215,14 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: flex-start;  /* Заголовок должен быть сверху */
-    text-align: center;
     padding-top: 50px;
-    padding-bottom: 400px; /* Отступы сверху и снизу */
+    height: 600px; 
     background-color: #28332c94;  /* Фон для контейнера */
-    width: 100%;
-    height: auto;  /* Убираем жесткое ограничение высоты */
     box-sizing: border-box;  /* Чтобы отступы не увеличивали размер */
     overflow: hidden;  /* Скрываем все элементы, выходящие за пределы */
 }
 
 .carousel {
-  //  gap: 0;  /* Убираем промежутки между элементами */
     position: relative;
     transition: transform 0.5s ease;
 }
@@ -245,13 +240,12 @@ body {
     position: absolute; /* Используем absolute для наложения картинок */
     text-align: center;
     border-radius: 20px;
-    background-color: #28332c94;
+    background-color: #28332cd2;
     border: 2px solid white;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
     transition: transform 0.5s, width 0.5s, height 0.5s;
     cursor: pointer;
     z-index: 1;
-    opacity: 0.8; /* Делаем боковые элементы полупрозрачными */
 }
 
 .carousel-item img {
