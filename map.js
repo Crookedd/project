@@ -122,11 +122,12 @@ document.getElementById('location-button').onclick = function() {
             if (locationMarker) {
                 map.removeLayer(locationMarker);
             }
+
             // Добавляем новый маркер местоположения
             locationMarker = L.marker([lat, lon]).addTo(map)
                 .bindPopup('Вы находитесь здесь!')
                 .openPopup();
-            map.setView([lat, lon], 15); 
+            map.setView([lat, lon], 15);
 
             // Заполняем поле "Откуда" координатами местоположения
             document.getElementById('from').value = `${lat}, ${lon}`;
@@ -170,13 +171,28 @@ document.getElementById('build-route').onclick = function () {
     const endName = document.getElementById('to').value.trim();
     const extraInputs = document.querySelectorAll('.extra-point-input');
 
-    // Добавляем начальную точку маршрута
-    const startPlace = places.find(place => place.name === startName);
-    if (startPlace) {
-        waypoints.push(L.latLng(startPlace.coordinates.y, startPlace.coordinates.x));
+    let startLatLon;
+
+    // Если в поле "Откуда" координаты, используем их
+    if (startName.match(/^[-+]?\d+(\.\d+)?\,\s*[-+]?\d+(\.\d+)?$/)) {
+        const coords = startName.split(',').map(coord => parseFloat(coord.trim()));
+        startLatLon = L.latLng(coords[0], coords[1]);
+    } else {
+        // Добавляем начальную точку маршрута из достопримечательности
+        const startPlace = places.find(place => place.name === startName);
+        if (startPlace) {
+            startLatLon = L.latLng(startPlace.coordinates.y, startPlace.coordinates.x);
+        }
     }
 
-    // Добавляем конечную точку маршрута сразу после начальной
+    if (startLatLon) {
+        waypoints.push(startLatLon);
+    } else {
+        alert('Пожалуйста, введите корректное местоположение или достопримечательность в поле "Откуда".');
+        return;
+    }
+
+    // Добавляем конечную точку маршрута
     const endPlace = places.find(place => place.name === endName);
     if (endPlace) {
         waypoints.push(L.latLng(endPlace.coordinates.y, endPlace.coordinates.x));
@@ -209,6 +225,30 @@ document.getElementById('build-route').onclick = function () {
         alert('Пожалуйста, заполните корректные названия всех точек маршрута.');
     }
 };
+
+document.getElementById('clear-routes-button').onclick = function() {
+    // Очищаем все маршруты с карты
+    if (routeControl) {
+        map.removeControl(routeControl); // Удаляем старый маршрут
+        routeControl = null; // Очищаем переменную
+    }
+
+    // Удаляем маркер местоположения
+    if (locationMarker) {
+        map.removeLayer(locationMarker); // Удаляем маркер
+        locationMarker = null; // Очищаем переменную
+    }
+
+    // Очищаем все точки маршрута
+    waypoints = [];
+
+    // Сбросить все поля ввода (например, "Откуда", "Куда")
+    document.getElementById('from').value = '';
+    document.getElementById('to').value = '';
+    document.querySelectorAll('.extra-point-input').forEach(input => input.remove());
+};
+
+
 
 
 
