@@ -17,7 +17,7 @@ app.use(cors());
 
 app.get('/attractions', async (req, res) => {
     try {
-        const result = await pool.query('SELECT id, name, coordinates, description, image_urls FROM attractions');
+        const result = await pool.query('SELECT id, name, coordinates, description, type, image_urls FROM attractions');
         res.json(result.rows);
     } catch (err) {
         console.error(err);

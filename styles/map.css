@@ -82,6 +82,34 @@ body {
   color: #ffffff;
 }
 
+.attraction-summary {
+  border-top: 1px solid #ccc; /* Цвет и стиль бордера */
+  padding-top: 10px; /* Отступ сверху */
+}
+
+.attraction-summary img {
+  width: 100px; /* Ширина изображения */
+  height: auto; /* Автоматическая высота */
+  margin-right: 10px; /* Отступ между изображениями */
+  display: inline-block; /* Расположение в одну линию */
+  vertical-align: middle; /* Выравнивание по вертикали */
+}
+
+.back-button {
+  color: rgb(4, 43, 5);
+  margin: 10px 0;
+  padding: 5px 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  border: 2px solid rgb(4, 43, 5);
+  border-radius: 25px;
+}
+.back-button:hover {
+  background-color: #444;
+  color: #ffffff;
+}
+
 #location-button {
   position: fixed;
   right: 20px;
