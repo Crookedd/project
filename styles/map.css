@@ -1,3 +1,4 @@
+@charset "UTF-8";
 body {
   margin: 0;
   font-family: "Roboto", sans-serif;
@@ -72,7 +73,8 @@ body {
   border-radius: 25px;
   cursor: pointer;
   padding: 10px;
-  margin-bottom: 10px;
+  margin-bottom: 2px;
+  margin-top: 2px;
   transition: background-color 0.3s;
 }
 .route-panel .route-form button:hover {
@@ -155,4 +157,57 @@ body {
   height: 100%;
   -o-object-fit: contain;
      object-fit: contain;
+}
+
+/* Стили для основного контейнера */
+#extra-points-container {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+/* Стили для добавленного input */
+.extra-point-input {
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  outline: none;
+}
+
+/* Пунктирное поле */
+.dashed-placeholder {
+  border: 2px dashed #444;
+  display: flex;
+  align-items: center;
+  justify-content: right;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.add-point-btn {
+  background: none;
+  border: none;
+  font-size: 1.5em;
+  cursor: pointer;
+  color: #444;
+}
+
+/* Стили кнопки добавления точки маршрута */
+#add-point-button {
+  width: 40px;
+  height: 40px;
+  border: 2px dashed #000;
+  border-radius: 50%;
+  background-color: transparent;
+  color: #000;
+  font-size: 1.5em;
+  text-align: center;
+  line-height: 5px;
+  cursor: pointer;
+  outline: none;
+  z-index: 1000;
+  transition: all 0.3s ease;
+}
+#add-point-button:hover {
+  background-color: #444;
+  color: #ffffff;
 }/*# sourceMappingURL=map.css.map */

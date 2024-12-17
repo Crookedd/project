@@ -172,77 +172,75 @@ body .content {
   padding-top: 60px;
 }
 
-.carousel-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding-top: 50px;
-  height: 600px;
-  background-color: rgba(40, 51, 44, 0.5803921569); /* Фон для контейнера */
-  box-sizing: border-box; /* Чтобы отступы не увеличивали размер */
-  overflow: hidden; /* Скрываем все элементы, выходящие за пределы */
+/*.carousel-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 50px;
+    height: 600px; 
+    background-color: #28332c94; 
+    box-sizing: border-box;
+    overflow: hidden; 
 }
 
 .carousel {
-  position: relative;
-  transition: transform 0.5s ease;
+    position: relative;
+    transition: transform 0.5s ease;
 }
 
+
 .carousel-title {
-  font-size: 36px; /* Размер шрифта для заголовка */
-  font-weight: bold;
-  color: primary-color; /* Цвет текста */
-  margin-bottom: 30px; /* Отступ снизу */
-  text-align: center;
+    font-size: 36px;  
+    font-weight: bold;
+    color: primary-color; 
+    margin-bottom: 30px;  
+    text-align: center;
 }
 
 .carousel-item {
-  position: absolute; /* Используем absolute для наложения картинок */
-  text-align: center;
-  border-radius: 20px;
-  background-color: rgba(40, 51, 44, 0.8235294118);
-  border: 2px solid white;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-  transition: transform 0.5s, width 0.5s, height 0.5s;
-  cursor: pointer;
-  z-index: 1;
+    position: absolute;
+    text-align: center;
+    border-radius: 20px;
+    background-color: #28332cd2;
+    border: 2px solid white;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    transition: transform 0.5s, width 0.5s, height 0.5s;
+    cursor: pointer;
+    z-index: 1;
 }
 
 .carousel-item img {
-  width: 100%;
-  height: 90%;
-  -o-object-fit: cover;
-     object-fit: cover;
-  border-radius: 15px 15px 0 0;
+    width: 100%;
+    height: 90%;
+    object-fit: cover;
+    border-radius: 15px 15px 0 0;
 }
 
 .carousel-item h3 {
-  margin: 2px;
-  font-size: 15px;
-  color: #ffffff;
+    margin: 2px;
+    font-size: 15px;
+    color: #ffffff;
 }
 
 .carousel-item.active {
-  transform: translateY(-20px) scale(1.2); /* Центрируем элемент с плавным увеличением */
-  width: 250px; /* Центральный элемент увеличиваем */
-  height: 300px; /* Центральный элемент увеличиваем */
-  box-shadow: 6px 6px 15px rgba(0, 0, 0, 0.3);
-  z-index: 2; /* Центрируем элемент */
-  opacity: 1; /* Центральный элемент не полупрозрачный */
+    transform: translateY(-20px) scale(1.2); 
+    width: 250px; 
+    height: 300px; 
+    box-shadow: 6px 6px 15px rgba(0, 0, 0, 0.3);
+    z-index: 2; 
+    opacity: 1; 
 }
 
 .carousel-item.inactive {
-  transform: scale(1.1); /* Немного уменьшаем боковые элементы */
-  width: 200px;
-  height: 270px;
-  opacity: 0.5; /* Уменьшаем прозрачность боковых элементов */
+    transform: scale(1.1);  
+    height: 270px;
+    opacity: 0.5;  
 }
 
 .carousel-item:first-child,
 .carousel-item:last-child {
-  flex-grow: 1;
-}
-
+    flex-grow: 1;
+}*/
 footer {
   background-color: #072109;
   color: #fff;

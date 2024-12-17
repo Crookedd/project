@@ -11,7 +11,7 @@ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
 // Переменные для хранения маркера местоположения и маршрута
 var locationMarker;
 var routeControl;
-var waypoints = [];
+//var waypoints = [];
 let places = [];
 
 // Функция для получения достопримечательностей из API
@@ -136,48 +136,81 @@ document.getElementById('location-button').onclick = function() {
     }
 };
 
-// Обработчик для кнопки "Добавить точку"
-document.getElementById('add-point').onclick = function() {
-    const extraPointName = document.getElementById('extra-point').value.trim();
-    const extraPlace = places.find(place => place.name === extraPointName);
 
-    if (extraPlace) {
-        waypoints.push(L.latLng(extraPlace.coordinates.y, extraPlace.coordinates.x)); // Добавляем точку в массив
-        alert('Точка добавлена: ' + extraPointName);
-        document.getElementById('extra-point').value = ''; // Очищаем поле для новой точки
-    } else {
-        alert('Пожалуйста, введите корректное название достопримечательности.');
-    }
-};
+let waypoints = []; // Хранение последовательных точек маршрута
 
-// Обработчик для кнопки "Построить маршрут"
-document.getElementById('build-route').onclick = function() {
+document.addEventListener('DOMContentLoaded', function () {
+    const container = document.getElementById('extra-points-container');
+    const placeholder = document.getElementById('add-point-placeholder');
+
+    // Обработчик нажатия на "+" в пунктирном поле
+    document.getElementById('add-point-button').onclick = function () {
+        // Создаем новый input
+        const newInput = document.createElement('input');
+        newInput.type = 'text';
+        newInput.placeholder = 'Введите название достопримечательности';
+        newInput.classList.add('extra-point-input');
+
+        // Добавляем новый input перед пунктирным полем
+        container.insertBefore(newInput, placeholder);
+
+        // Перемещаем пунктирное поле вниз
+        container.appendChild(placeholder);
+
+        // Фокус на новом input
+        newInput.focus();
+    };
+});
+
+
+document.getElementById('build-route').onclick = function () {
+    waypoints = []; // Очищаем старые точки
+
     const startName = document.getElementById('from').value.trim();
     const endName = document.getElementById('to').value.trim();
+    const extraInputs = document.querySelectorAll('.extra-point-input');
 
+    // Добавляем начальную точку маршрута
     const startPlace = places.find(place => place.name === startName);
+    if (startPlace) {
+        waypoints.push(L.latLng(startPlace.coordinates.y, startPlace.coordinates.x));
+    }
+
+    // Добавляем конечную точку маршрута сразу после начальной
     const endPlace = places.find(place => place.name === endName);
-
-    if (startPlace && endPlace) {
+    if (endPlace) {
         waypoints.push(L.latLng(endPlace.coordinates.y, endPlace.coordinates.x));
+    }
 
-        // Создаем маршрут
+    // Добавляем промежуточные точки в порядке их ввода
+    extraInputs.forEach(input => {
+        const extraName = input.value.trim();
+        const extraPlace = places.find(place => place.name === extraName);
+
+        if (extraPlace) {
+            waypoints.push(L.latLng(extraPlace.coordinates.y, extraPlace.coordinates.x));
+        } else {
+            console.warn(`Место "${extraName}" не найдено!`);
+        }
+    });
+
+    // Проверяем и строим маршрут
+    if (routeControl) {
+        map.removeControl(routeControl); // Удаляем старый маршрут
+    }
+
+    if (waypoints.length > 1) {
         routeControl = L.Routing.control({
-            waypoints: [
-                L.latLng(startPlace.coordinates.y, startPlace.coordinates.x),
-                ...waypoints
-            ],
+            waypoints: waypoints,
             routeWhileDragging: true,
-            createMarker: function() { return null; } 
+            createMarker: function () { return null; } // Отключаем маркеры
         }).addTo(map);
-        
-        // Отображаем информацию о маршруте
-        var routeInfo = routeControl.getRouteItineraryHtml(0);
-        document.getElementById('route-info').innerHTML = routeInfo;
     } else {
-        alert('Пожалуйста, заполните корректные названия для "Откуда" и "Куда".');
+        alert('Пожалуйста, заполните корректные названия всех точек маршрута.');
     }
 };
+
+
 
 // Обработчик для кнопки открытия панели маршрута
 document.getElementById('route-button').onclick = function() {

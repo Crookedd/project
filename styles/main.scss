@@ -211,15 +211,15 @@ body {
 }
 
 
-.carousel-container {
+/*.carousel-container {
     display: flex;
     flex-direction: column;
     align-items: center;
     padding-top: 50px;
     height: 600px; 
-    background-color: #28332c94;  /* Фон для контейнера */
-    box-sizing: border-box;  /* Чтобы отступы не увеличивали размер */
-    overflow: hidden;  /* Скрываем все элементы, выходящие за пределы */
+    background-color: #28332c94; 
+    box-sizing: border-box;
+    overflow: hidden; 
 }
 
 .carousel {
@@ -229,15 +229,15 @@ body {
 
 
 .carousel-title {
-    font-size: 36px;  /* Размер шрифта для заголовка */
+    font-size: 36px;  
     font-weight: bold;
-    color: primary-color;  /* Цвет текста */
-    margin-bottom: 30px;  /* Отступ снизу */
+    color: primary-color; 
+    margin-bottom: 30px;  
     text-align: center;
 }
 
 .carousel-item {
-    position: absolute; /* Используем absolute для наложения картинок */
+    position: absolute;
     text-align: center;
     border-radius: 20px;
     background-color: #28332cd2;
@@ -262,25 +262,24 @@ body {
 }
 
 .carousel-item.active {
-    transform: translateY(-20px) scale(1.2); /* Центрируем элемент с плавным увеличением */
-    width: 250px; /* Центральный элемент увеличиваем */
-    height: 300px; /* Центральный элемент увеличиваем */
+    transform: translateY(-20px) scale(1.2); 
+    width: 250px; 
+    height: 300px; 
     box-shadow: 6px 6px 15px rgba(0, 0, 0, 0.3);
-    z-index: 2; /* Центрируем элемент */
-    opacity: 1; /* Центральный элемент не полупрозрачный */
+    z-index: 2; 
+    opacity: 1; 
 }
 
 .carousel-item.inactive {
-    transform: scale(1.1);  /* Немного уменьшаем боковые элементы */
-    width: 200px;
+    transform: scale(1.1);  
     height: 270px;
-    opacity: 0.5;  /* Уменьшаем прозрачность боковых элементов */
+    opacity: 0.5;  
 }
 
 .carousel-item:first-child,
 .carousel-item:last-child {
     flex-grow: 1;
-}
+}*/
 
 footer {
     background-color: #072109; // Цвет фона
